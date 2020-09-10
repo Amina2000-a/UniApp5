@@ -1,0 +1,13 @@
+C:\Users\WWW\source\repos\UniApp\UniApp\obj\Debug\netcoreapp3.1\UniApp.csprojAssemblyReference.cache
+C:\Users\WWW\source\repos\UniApp\UniApp\obj\Debug\netcoreapp3.1\UniApp.AssemblyInfoInputs.cache
+C:\Users\WWW\source\repos\UniApp\UniApp\obj\Debug\netcoreapp3.1\UniApp.AssemblyInfo.cs
+C:\Users\WWW\source\repos\UniApp\UniApp\obj\Debug\netcoreapp3.1\UniApp.csproj.CoreCompileInputs.cache
+C:\Users\WWW\source\repos\UniApp\UniApp\bin\Debug\netcoreapp3.1\UniApp.exe
+C:\Users\WWW\source\repos\UniApp\UniApp\bin\Debug\netcoreapp3.1\UniApp.deps.json
+C:\Users\WWW\source\repos\UniApp\UniApp\bin\Debug\netcoreapp3.1\UniApp.runtimeconfig.json
+C:\Users\WWW\source\repos\UniApp\UniApp\bin\Debug\netcoreapp3.1\UniApp.runtimeconfig.dev.json
+C:\Users\WWW\source\repos\UniApp\UniApp\bin\Debug\netcoreapp3.1\UniApp.dll
+C:\Users\WWW\source\repos\UniApp\UniApp\bin\Debug\netcoreapp3.1\UniApp.pdb
+C:\Users\WWW\source\repos\UniApp\UniApp\obj\Debug\netcoreapp3.1\UniApp.dll
+C:\Users\WWW\source\repos\UniApp\UniApp\obj\Debug\netcoreapp3.1\UniApp.pdb
+C:\Users\WWW\source\repos\UniApp\UniApp\obj\Debug\netcoreapp3.1\UniApp.genruntimeconfig.cache
