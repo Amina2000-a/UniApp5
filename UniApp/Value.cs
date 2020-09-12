@@ -6,14 +6,14 @@ using System.Threading.Tasks;
 
 namespace UniApp
 {
-    class Prog
+    class Value
     {
-        public string ProgName { get; set; }
+        public string ValueName { get; set; }
         public DateTime Date { get; set; }
         List<Student> StudentList;
-        public Prog(string ProgName,DateTime Date)
+        public Value(string ValueName, DateTime Date)
         {
-            this.ProgName = ProgName;
+            this.ValueName = ValueName;
             this.Date = Date;
             StudentList = new List<Student>();
         }

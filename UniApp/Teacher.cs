@@ -4,20 +4,29 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace University
+namespace UniApp
 {
     class Teacher
     {
-        public string Fullname { get; set; }
         public int Id { get; private set; }
-        public List<Teacher> TeacherList { get; set; }
+        public string Firstname { get; set; }
+        public string Lastname { get; set; }
+        public string Email { get; set; }
+        public string Phone { get; set; }
+        public int WorkExperience { get; set; }
+        public List<K205> K205List { get; set; }
         private static int teachId = 1;
 
-        public Teacher(string Fullname)
+        public Teacher(string Firstname, string Lastname, string Email, string Phone, int WorkExperience)
         {
-            this.Fullname = Fullname;
-            this.Id = teachId;
+            this.Firstname = Firstname;
+            this.Lastname = Lastname;
+            this.Email = Email;
+            this.Phone = Phone;
+            this.WorkExperience = WorkExperience;
+            Id = teachId;
             teachId++;
+            K205List = new List<K205>();
         }
     }
 }

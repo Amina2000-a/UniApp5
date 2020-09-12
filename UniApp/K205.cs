@@ -4,25 +4,41 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace University
+namespace UniApp
 {
     class K205
     {
-        public List<Student> StudentList;
+        public int Id { get; private set; }
+        public string K205Name{get; set;}
+        public List<Student> StudentList { get; set; }
+        public Teacher Teacher;
+        private static int K205Id = 1;
         public List<Prog> ProgList;
         public List<Teacher> TeacherList;
+        public List<Value> ValueList;
 
-        public K205()
+        public K205(string K205Name, Teacher teacher)
         {
+            this.K205Name = K205Name;
             StudentList = new List<Student>();
+            K205Id++;
+            Id = K205Id;
             ProgList = new List<Prog>();
             TeacherList = new List<Teacher>();
+            ValueList = new List<Value>();
             Prog design = new Prog("Design", new DateTime(2020, 09, 09));
             Prog programming = new Prog("Programming", new DateTime(2020, 09, 12));
             Prog gamecreate = new Prog("GameCreate", new DateTime(2020, 09, 30));
             ProgList.Add(design);
             ProgList.Add(programming);
             ProgList.Add(gamecreate);
+
+            Value C = new Value("70-80", new DateTime(2020, 09, 09));
+            Value B = new Value("80-90", new DateTime(2020, 09, 12));
+            Value A = new Value("90-100", new DateTime(2020, 09, 30));
+            ValueList.Add(C);
+            ValueList.Add(B);
+            ValueList.Add(A);
         }
         public void AddStudent()
         {
@@ -31,7 +47,7 @@ namespace University
             string name = Console.ReadLine();
             if (name.Length > 2)
             {
-                Student stu = new Student(name);
+                Student stu = new Student(stu.Fullname,stu.Email,stu.Phone,stu.WorkExperience);
                 StudentList.Add(stu);
                 Console.ForegroundColor = ConsoleColor.Green;
                 Console.WriteLine("\nStudent added successfully");
@@ -43,7 +59,7 @@ namespace University
             Console.WriteLine("\n***************************");
             Console.Write("Please write teacher name:");
             string name = Console.ReadLine();
-            Teacher teach = new Teacher(name);
+            Teacher teach = new Teacher(teach.Id, teach.Firstname, teach.Lastname, teach.Phone, teach.Email, teach.WorkExperience);
             TeacherList.Add(teach);
             Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine("\nTeacher added successfully");
@@ -203,6 +219,119 @@ namespace University
                         break;
                     }
                     else if(stu.ProgList.Contains(SelectedProg))
+                    {
+                        Console.ForegroundColor = ConsoleColor.Gray;
+                        Console.WriteLine("Student Id:{0}, Student Name:{1}", stu.Id, stu.Fullname);
+                    }
+                }
+            }
+            else
+            {
+                Console.BackgroundColor = ConsoleColor.Black;
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine("\nWarning:Please,select a valid id...");
+                goto Start;
+            }
+        }
+        public void ShowValueList(Student selectedStu)
+        {
+            Value SelectedValue = null;
+            foreach (Value val in ValueList)
+            {
+                Console.WriteLine("Value's Name: {0}", val.ValueName, val.Date);
+            }
+        Start:
+            Console.ForegroundColor = ConsoleColor.Cyan;
+            Console.Write("Please,Select Prog by Id:");
+            string valueName = Console.ReadLine();
+            bool correctName = false;
+            foreach (Value val in ValueList)
+            {
+                if (val.ValueName == valueName)
+                {
+                    correctName = true;
+                    SelectedValue = val;
+                    break;
+                }
+            }
+            if (correctName)
+            {
+                Console.ForegroundColor = ConsoleColor.DarkGreen;
+                Console.WriteLine("Value's name:{0} was added to student's name{1}\n", SelectedValue.ValueName, selectedStu.Fullname);
+                selectedStu.ValueList.Add(SelectedValue);
+            }
+            else
+            {
+                Console.BackgroundColor = ConsoleColor.Black;
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine("\nWarning:Please,select a valid id...");
+                goto Start;
+            }
+        }
+        public void AddValue()
+        {
+            Console.ForegroundColor = ConsoleColor.Cyan;
+
+            Console.WriteLine("__________***_________");
+            Console.Write("Please write Value name:");
+
+            string valname = Console.ReadLine();
+            if (!string.IsNullOrEmpty(valname))
+            {
+                Value vl = new Value(valname, DateTime.Now);
+                ValueList.Add(vl);
+                Console.ForegroundColor = ConsoleColor.DarkBlue;
+                Console.WriteLine("__________***_________");
+                Console.WriteLine("Value name was added successfully:");
+                foreach (var val in ValueList)
+                {
+                    Console.WriteLine("Value Name:{0}, Value Date:{1}", val.ValueName, val.Date);
+                }
+            }
+            else
+            {
+                Console.BackgroundColor = ConsoleColor.Red;
+                Console.WriteLine("__________***_________");
+                Console.Write("Please fiel Value name:");
+
+            }
+
+        }
+        public void ShowValueForStudent()
+        {
+            Value SelectedValue = null;
+            foreach (Value val in ValueList)
+            {
+                Console.WriteLine("Value's Name: {0}", val.ValueName, val.Date);
+            }
+        Start:
+            Console.ForegroundColor = ConsoleColor.Cyan;
+            Console.Write("Please,Select Value by Id:");
+            string valueName = Console.ReadLine();
+            bool correctName = false;
+            foreach (Value val in ValueList)
+            {
+                if (val.ValueName == valueName)
+                {
+                    correctName = true;
+                    SelectedValue = val;
+                    break;
+                }
+            }
+            if (correctName)
+            {
+                Console.ForegroundColor = ConsoleColor.DarkGreen;
+                Console.WriteLine("Student Name for Value's name:{0}\n", SelectedValue.ValueName);
+                foreach (Student stu in StudentList)
+                {
+                    if (stu.ValueList.Count == 0)
+                    {
+                        Console.BackgroundColor = ConsoleColor.Black;
+                        Console.ForegroundColor = ConsoleColor.Red;
+                        Console.WriteLine("\nWarning:Selected Student was not found any Value...");
+                        break;
+                    }
+                    else if (stu.ValueList.Contains(SelectedValue))
                     {
                         Console.ForegroundColor = ConsoleColor.Gray;
                         Console.WriteLine("Student Id:{0}, Student Name:{1}", stu.Id, stu.Fullname);
